@@ -1,2 +1,0 @@
-
-"""SecureTask application package."""
