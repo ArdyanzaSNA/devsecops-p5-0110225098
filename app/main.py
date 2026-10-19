@@ -1,5 +1,6 @@
 
 from app.task_service import TaskService
+from app.task_report import generate_task_report
 
 
 def main():
@@ -10,7 +11,8 @@ def main():
         print("1. Add task")
         print("2. List tasks")
         print("3. Delete task")
-        print("4. Exit")
+        print("4. Task report")
+        print("5. Exit")
 
         choice = input("Choose: ").strip()
 
@@ -36,6 +38,13 @@ def main():
                     print("Task not found.")
 
             elif choice == "4":
+                report = generate_task_report(service.list_tasks())
+                print("\n=== Task Report ===")
+                print(f"Total tasks: {report['total']}")
+                print(f"Completed: {report['completed']}")
+                print(f"Pending: {report['pending']}")
+
+            elif choice == "5":
                 break
 
             else:
